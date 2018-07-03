@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数组</title>
+</head>
+<body>
+	<script>
+		// 1.数组去重
+		var names = ['Alice', 'Bob', 'Tiff', 'Bruce', 'Alice',1,3,'3'],tempArr =[];
+		let arr = [1, 2, 1, 2, 3, 5, 4, 5, 3, 4, 4, 4, 4];
+		let result = names.sort().reduce((accumulator, current) => {
+		    const length = accumulator.length
+		    if (length === 0 || accumulator[length - 1] !== current) {
+		        accumulator.push(current);
+		    }    return accumulator;
+		}, []);
+		console.log(result)
+		/*=======================================*/
+
+		let obj = {};
+		names.map(item=>{
+			if(!obj[item]) {
+				obj[item] = 1;
+				tempArr.push(item)
+			}
+		})
+		console.log(tempArr)
+
+		/*=======================================*/
+
+		tempArr = [...new Set(names)];
+		console.log(tempArr)
+	</script>
+</body>
+</html>

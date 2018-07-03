@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>常用代码片段</title>
+    <script src="../util/jquery-1.4.4.min.js"></script>
+    <style>
+    .demo1 {
+        width: 100px;
+        height: 100px;
+        background-color: pink;
+    }
+
+    .hover {
+        background-color: red;
+        transform: rotate(90deg);
+    }
+    </style>
+</head>
+
+<body>
+	<div id="dateSpan"></div>
+
+    <div class="demo1">鼠标悬停</div>
+    <input id="send" type="button" value="发送验证码">
+    X:
+    <input id="xxx" type="text" /> Y:
+    <input id="yyy" type="text" />
+    <script>
+    // 一、预加载图像
+    let preloadImgs = function() {
+        for (let i = 0, len = arguments.length; i < len; i++) {
+            $('<img/>').attr('src', arguments[i]);
+        }
+    }
+    preloadImgs('imgs/zs5.jpg', 'imgs/zs6.jpg', 'imgs/zs7.jpeg');
+    // 二、检查图像是否加载
+    $('img').load(() => {
+        console.log('success')
+    })
+    // 四、悬停切换
+    $('.demo1').hover(function() {
+        $(this).toggleClass('hover');
+    })
+    // 六、鼠标滚轮
+    // $('.demo1').on("mousewheel DOMMouseScroll", function(event) {
+
+    //     // chrome & ie || // firefox
+
+    //     var delta = (event.originalEvent.wheelDelta && (event.originalEvent.wheelDelta > 0 ? 1 : -1)) ||
+
+    //         (event.originalEvent.detail && (event.originalEvent.detail > 0 ? -1 : 1));
+
+
+
+    //     if (delta > 0) {
+
+    //         console.log('mousewheel top');
+
+    //     } else if (delta < 0) {
+
+    //         console.log('mousewheel bottom');
+
+    //     }
+
+    // });
+
+	// 七、 鼠标坐标
+    function mousePosition(ev) {
+
+        if (ev.pageX || ev.pageY) {
+
+            return { x: ev.pageX, y: ev.pageY };
+
+        }
+
+        return {
+
+            x: ev.clientX + document.body.scrollLeft - document.body.clientLeft,
+
+            y: ev.clientY + document.body.scrollTop - document.body.clientTop
+
+        };
+
+    }
+
+    function mouseMove(ev) {
+
+        ev = ev || window.event;
+
+
+
+        var mousePos = mousePosition(ev);
+
+
+
+        document.getElementById('xxx').value = mousePos.x;
+
+        document.getElementById('yyy').value = mousePos.y;
+
+    }
+
+    document.onmousemove = mouseMove;
+
+
+    // JavaScript
+
+var times = 60, // 时间设置60秒
+
+ timer = null;
+
+ 
+
+document.getElementById('send').onclick = function () {
+
+ // 计时开始
+
+ timer = setInterval(function () {
+
+ times--;
+
+ 
+
+ if (times <= 0) {
+
+ send.value = '发送验证码';
+
+ clearInterval(timer);
+
+ send.disabled = false;
+
+ times = 60;
+
+ } else {
+
+ send.value = times + '秒后重试';
+
+ send.disabled = true;
+
+ }
+
+ }, 1000);
+
+}
+
+
+var calculateDate = function(){
+
+ 
+
+    var date = new Date();
+
+    var weeks = ["日","一","二","三","四","五","六"];
+
+ 
+
+    return date.getFullYear()+"年"+(date.getMonth()+1)+"月"+
+
+    date.getDate()+"日 星期"+weeks[date.getDay()];
+
+}
+
+ 
+
+$(function(){
+
+    $("#dateSpan").html(calculateDate());
+
+});
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

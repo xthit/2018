@@ -1,0 +1,34 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+</head>
+<body oncontextmenu="return false" onselectstart="return false" oncopy="return false">
+<ul>
+  <li><a href="###">阅谁问君诵，水落清香浮</a></li>
+  <li><a href="###">阅谁问君诵，水落清香浮</a></li>
+  <li><a href="###">阅谁问君诵，水落清香浮</a></li>
+  <li><a href="###">阅谁问君诵，水落清香浮</a></li>
+  <li><a href="###">阅谁问君诵，水落清香浮</a></li>
+  <li><a href="###">阅谁问君诵，水落清香浮</a></li>
+</ul>
+<script>
+// 禁止右键、复制等行为可以通过在body里加属性限制，也可以通过js的方式
+document.oncontextmenu = function(){
+  return false;
+}
+document.onkeydown = function(){
+  if (event.ctrlKey && window.event.keyCode==67){
+    return false;
+  }
+}
+document.body.oncopy = function (){
+  return false;
+}
+//不建议连选中文本都不行
+document.onselectstart = function(){
+  //return false;
+}
+</script>
+</body>
+</html>
